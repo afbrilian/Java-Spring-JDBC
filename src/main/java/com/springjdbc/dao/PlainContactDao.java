@@ -72,7 +72,7 @@ public class PlainContactDao implements ContactDao {
 		return null;
 	}
 
-	public String findFirstNameById(Long id) {
+	public String findFirstNameById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
