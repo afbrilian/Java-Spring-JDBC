@@ -1,5 +1,7 @@
 package com.springjdbc.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import com.springjdbc.sqlhandling.MySQLErrorCodesTranslator;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 public class JdbcContactDao implements ContactDao, InitializingBean {
@@ -58,10 +61,22 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 		this.jdbcTemplate = jdbcTemplate;
 		*/
 	}
+	
+	private static final class ContactMapper implements RowMapper<Contact>{
+
+		public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Contact contact = new Contact();
+			contact.setId(rs.getLong("id"));
+			contact.setFirstName(rs.getString("first"));
+			contact.setLastName(rs.getString("last"));
+			return contact;
+		}
+		
+	}
 
 	public List<Contact> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select id, age, first, last from employees";
+		return namedParameterJdbcTemplate.query(sql, new ContactMapper());
 	}
 
 	public List<Contact> findByFirstName(String firstName) {
