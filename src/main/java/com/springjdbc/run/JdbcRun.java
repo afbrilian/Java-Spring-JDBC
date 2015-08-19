@@ -13,7 +13,7 @@ public class JdbcRun {
 		ctx.load("classpath:META-INF/config/datasource-dbcp.xml");
 		ctx.refresh();
 		ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
- 		System.out.println("First name for contact id 1 is: " +	contactDao.findFirstNameById(100));
+ 		System.out.println("First name for contact id 1 is: " +	contactDao.findFirstNameById(1));
  		
  		List<Contact> contacts = contactDao.findAll();
  		for(Contact contact : contacts){

@@ -66,16 +66,17 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 
 		public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Contact contact = new Contact();
-			contact.setId(rs.getLong("id"));
-			contact.setFirstName(rs.getString("first"));
-			contact.setLastName(rs.getString("last"));
+			contact.setId(rs.getLong("ID"));
+			contact.setFirstName(rs.getString("FIRST_NAME"));
+			contact.setLastName(rs.getString("LAST_NAME"));
+			contact.setBirthDate(rs.getDate("BIRTH_DATE"));
 			return contact;
 		}
 		
 	}
 
 	public List<Contact> findAll() {
-		String sql = "select id, age, first, last from employees";
+		String sql = "select ID, FIRST_NAME, LAST_NAME, BIRTH_DATE from contact";
 		return namedParameterJdbcTemplate.query(sql, new ContactMapper());
 	}
 
@@ -91,16 +92,16 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 
 	public String findFirstNameById(int id) {
 		/*use parameter jdbc template*/
-		String sql = "select first from employees where id = :id";
+		String sql = "select FIRST_NAME from contact where ID = :ID";
 		
 		Map<String, Object> namedParameters = new HashMap<String, Object>();
-		namedParameters.put("id", id);
+		namedParameters.put("ID", id);
 		
 		return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
 		
 		/*Use NON-parameter jdbc template
 		return jdbcTemplate.queryForObject(
-				"select first from employees where id = ?",
+				"select FIRST_NAME from contact where id = ?",
 				new Object[] { id }, String.class);
 		*/
 	}
