@@ -6,6 +6,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.springjdbc.dao.ContactDao;
 import com.springjdbc.model.Contact;
+import com.springjdbc.model.ContactTelDetail;
 
 public class JdbcRun {
 	public static void main(String[] args){
@@ -20,6 +21,18 @@ public class JdbcRun {
  			System.out.println(contact);
  			System.out.println();
  		}
+ 		
+ 		List<Contact> contactsWithDetail = contactDao.findAllWithDetail();
+		for (Contact contact : contactsWithDetail) {
+			System.out.println(contact);
+			if (contact.getContactTelDetails() != null) {
+				for (ContactTelDetail contactTelDetail : contact
+						.getContactTelDetails()) {
+					System.out.println("---" + contactTelDetail);
+				}
+			}
+			System.out.println();
+		}
  		
  		ctx.close();
 	}

@@ -119,4 +119,9 @@ public class PlainContactDao implements ContactDao {
 		}
 	}
 
+	public List<Contact> findAllWithDetail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
