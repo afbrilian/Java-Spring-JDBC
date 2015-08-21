@@ -18,6 +18,13 @@ This is the example of how java interact with database (I am using mysql) using 
 * DAO (Data Access Object) Pattern
 * Spring Dependency Injection
 
+## Database Settings
+
+![database structure](https://cloud.githubusercontent.com/assets/11399839/9414014/98fbc292-485f-11e5-9adf-f730242a6dd2.PNG)
+
+![contact](https://cloud.githubusercontent.com/assets/11399839/9414079/fb5a1fc4-485f-11e5-995b-47b2511c973e.PNG)
+![contactteldetail](https://cloud.githubusercontent.com/assets/11399839/9414080/fba9c83a-485f-11e5-9bb4-1b27549cdfc2.PNG)
+
 ## Description
 It will be easier for me to explain by using the commit history :D
 * First Commit [8ecb4b2](https://github.com/afbrilian/Java-Spring-JDBC/commit/8ecb4b258d91d247d2cfcadd49cc304606901b96)
@@ -94,4 +101,5 @@ And for the other commit? it is almost the same but just using the different spr
 ## Summary
 Spring framework make our life easier!! and consider using querydsl as the DSL for query in many database (please wait for other repository which use querydsl ^^).
 
-Any question or improvement for this explanation is welcomed :)
+Any question or improvement for this explanation is welcome :)
+>> Big thanks to Apress.Spring.4th.Edition
