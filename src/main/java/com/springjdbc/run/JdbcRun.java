@@ -58,6 +58,12 @@ public class JdbcRun {
 		System.out.println("Check DB for id 1");
 		
 		System.out.println("====================");
+		Contact ctc2 = new Contact();
+		ctc2.setFirstName("Rod");
+		ctc2.setLastName("Johnson");
+		ctc2.setBirthDate(new Date((new GregorianCalendar(2001, 10, 1)).getTime().getTime()));
+		contactDaoAnnotate.insert(ctc2);
+		System.out.println("Check DB for the newly inserted record");
 		
  		ctx.close();
 	}
