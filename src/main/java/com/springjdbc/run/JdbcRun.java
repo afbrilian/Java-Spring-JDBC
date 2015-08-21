@@ -39,8 +39,13 @@ public class JdbcRun {
  		
 		//Use Spring annotation
 		ContactDao contactDaoAnnotate = ctx.getBean("contactDaoAnnotate", ContactDao.class);		
-		List<Contact> contactsAnnotate = contactDaoAnnotate.findAll();
-		listContacts(contactsAnnotate);
+		List<Contact> contactsAll = contactDaoAnnotate.findAll();
+		listContacts(contactsAll);
+		
+		System.out.println("====================");
+		
+		List<Contact> contactsByFirstName = contactDaoAnnotate.findByFirstName("chris");
+		listContacts(contactsByFirstName);
 		
  		ctx.close();
 	}
