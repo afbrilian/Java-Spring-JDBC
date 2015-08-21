@@ -124,4 +124,9 @@ public class PlainContactDao implements ContactDao {
 		return null;
 	}
 
+	public void insertWithDetail(Contact contact) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

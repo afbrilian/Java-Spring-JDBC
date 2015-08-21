@@ -167,4 +167,9 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 
 	}
 
+	public void insertWithDetail(Contact contact) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
