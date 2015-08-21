@@ -1,5 +1,7 @@
 package com.springjdbc.run;
 
+import java.sql.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -43,9 +45,19 @@ public class JdbcRun {
 		listContacts(contactsAll);
 		
 		System.out.println("====================");
-		
 		List<Contact> contactsByFirstName = contactDaoAnnotate.findByFirstName("chris");
 		listContacts(contactsByFirstName);
+		
+		System.out.println("====================");
+		Contact ctc = new Contact();
+		ctc.setId(1l);
+		ctc.setFirstName("Chris");
+		ctc.setLastName("John");
+		ctc.setBirthDate(new Date((new GregorianCalendar(1977, 10, 1)).getTime().getTime()));
+		contactDaoAnnotate.update(ctc);
+		System.out.println("Check DB for id 1");
+		
+		System.out.println("====================");
 		
  		ctx.close();
 	}

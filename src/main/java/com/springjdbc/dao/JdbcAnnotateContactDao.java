@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.springjdbc.model.Contact;
 import com.springjdbc.query.SelectAllContacts;
 import com.springjdbc.query.SelectContactByFirstName;
+import com.springjdbc.query.UpdateContact;
 
 @Repository("contactDaoAnnotate")
 public class JdbcAnnotateContactDao implements ContactDao {
@@ -22,6 +23,7 @@ public class JdbcAnnotateContactDao implements ContactDao {
 	
 	private SelectAllContacts selectAllContacts;
 	private SelectContactByFirstName selectContactByFirstName;
+	private UpdateContact updateContact;
 	
 	public JdbcAnnotateContactDao() {}
 	
@@ -29,6 +31,7 @@ public class JdbcAnnotateContactDao implements ContactDao {
 	public void setDataSource(DataSource dataSource) {
 		this.selectAllContacts = new SelectAllContacts(dataSource);
 		this.selectContactByFirstName = new SelectContactByFirstName(dataSource);
+		this.updateContact = new UpdateContact(dataSource);
 	}
 	
 	public List<Contact> findAll() {
@@ -62,7 +65,13 @@ public class JdbcAnnotateContactDao implements ContactDao {
 	}
 
 	public void update(Contact contact) {
-		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("first_name", contact.getFirstName());
+		paramMap.put("last_name", contact.getLastName());
+		paramMap.put("birth_date", contact.getBirthDate());
+		paramMap.put("id", contact.getId());
+		updateContact.updateByNamedParam(paramMap);
+		LOG.info("Existing contact updated with id: " + contact.getId());
 		
 	}
 
