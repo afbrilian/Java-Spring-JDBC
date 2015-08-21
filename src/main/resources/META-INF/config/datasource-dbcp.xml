@@ -6,7 +6,9 @@
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
+	<context:component-scan base-package="com.springjdbc.dao" />
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" 
 		p:driverClassName="${jdbc.driverClassName}"
@@ -17,4 +19,5 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<bean id="contactDao" class="com.springjdbc.dao.JdbcContactDao" 
 		p:dataSource-ref="dataSource" />
+	
 </beans>

@@ -12,7 +12,9 @@ public class Contact implements Serializable {
 	private String lastName;
 	private Date birthDate;
 	private List<ContactTelDetail> contactTelDetails;
-
+	
+	public Contact() {}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}

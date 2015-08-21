@@ -10,6 +10,8 @@ public class ContactTelDetail implements Serializable {
 	private String telType;
 	private String telNumber;
 
+	public ContactTelDetail() {}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
