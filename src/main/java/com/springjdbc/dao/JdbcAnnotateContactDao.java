@@ -12,20 +12,14 @@ import com.springjdbc.query.SelectAllContacts;
 
 @Repository("contactDaoAnnotate")
 public class JdbcAnnotateContactDao implements ContactDao {
-	
-	private DataSource dataSource;
+
 	private SelectAllContacts selectAllContacts;
 	
 	public JdbcAnnotateContactDao() {}
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
 		this.selectAllContacts = new SelectAllContacts(dataSource);		
-	}
-	
-	public DataSource getDataSource() {
-		return dataSource;
 	}
 	
 	public List<Contact> findAll() {
