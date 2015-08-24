@@ -2,7 +2,6 @@
 This is the example of how java interact with database (I am using mysql) using spring JDBC
 
 ## Dependency
-* group: commons-dbcp; artifact: commons-dbcp; version 1.2.2
 * group mysql; artifact: mysql-connector-java; version: 5.1.29
 * group: springframework; artifact: spring-core; version: 4.1.1.RELEASE
 * group springframework; artifact: spring-context; version: 4.0.0.RELEASE
@@ -38,7 +37,7 @@ But the good news, dont worry, there is spring framework to make our work easier
 
 * Second Commit [41ea67](https://github.com/afbrilian/Java-Spring-JDBC/commit/41ea67dc3a6e3f879173f62c9961a7feae2fccbe)
 
-There is the spring framework to save the day!! define the dependency for the commons-dbcp and spring framework in pom.xml.
+There is the spring framework to save the day!! define the dependency for the spring DriverManagerDataSource(not the commons-dbcp, it is outdated and i have changed it in my latest commit) and spring framework in pom.xml.
 create the xml file for spring dependency (from now on forward I will stick to the datasource-dbcp.xml), define the datasource bean which use the org.apache.commons.dbcp.BasicDataSource class.
 the datasource bean use destroy-method close so the connection to the database will be closed everytime the process is complete, and define the other properties by loaded it from .properties file which located in :
 ```
